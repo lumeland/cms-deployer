@@ -14,13 +14,14 @@ gitRepo.password = gitPassword;
 
 console.log(`Cloning repository from ${gitRepo.toString()}...`);
 
-await runCommand("git", ["clone", "--depth=1", gitRepo.toString(), "."]);
+const result = await runCommand("git", ["clone", "--depth=1", gitRepo.toString(), "."]);
+console.log(result);
 
 async function runCommand(cmd: string, args: string[] = []) {
   const command = new Deno.Command(cmd, {
     args,
-    stdout: "inherit",
-    stderr: "inherit",
+    stdout: "piped",
+    stderr: "piped",
   });
 
   const { stdout, stderr } = await command.output();
