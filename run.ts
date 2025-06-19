@@ -14,7 +14,7 @@ gitRepo.password = gitPassword;
 
 console.log(`Cloning repository from ${gitRepo.toString()}...`);
 
-const result = await runCommand("git", ["clone", "--depth=1", gitRepo.toString(), "."]);
+const result = await runCommand("git", ["clone", "--depth=1", gitRepo.toString(), "repo"]);
 console.log(result);
 
 async function runCommand(cmd: string, args: string[] = []) {
