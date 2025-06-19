@@ -14,7 +14,11 @@ gitRepo.password = gitPassword;
 
 console.log(`Cloning repository from ${gitRepo.toString()}...`);
 
-console.log(Array.from(Deno.readDirSync(".")));
+// Ensure the current directory is empty
+const entries = Deno.readDirSync(".");
+for (const entry of entries) {
+  Deno.removeSync(entry.name, { recursive: true });
+}
 
 const result = await runCommand("git", [
   "clone",
@@ -22,6 +26,7 @@ const result = await runCommand("git", [
   gitRepo.toString(),
   ".",
 ]);
+
 console.log(result);
 
 async function runCommand(cmd: string, args: string[] = []) {
