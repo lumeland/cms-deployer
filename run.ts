@@ -14,7 +14,7 @@ gitRepo.password = gitPassword;
 
 console.log(`Cloning repository from ${gitRepo.toString()}...`);
 
-console.log(Deno.readDirSync("."));
+console.log(Array.from(Deno.readDirSync(".")));
 
 const result = await runCommand("git", [
   "clone",
