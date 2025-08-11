@@ -1,8 +1,5 @@
 {
   "tasks": {
     "dev": "deno run -RWN --allow-run serve.ts"
-  },
-  "imports": {
-    "galo/": "https://deno.land/x/galo@v0.3.2/"
   }
 }
